@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+#### [Pesquisa](pesquisa.html)
 
-You can use the [editor on GitHub](https://github.com/KleberNeves/KleberNeves.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+A pesquisa científica que eu já fiz ou estou fazendo.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+#### [Divulgação Científica](divulgacao.html)
 
-### Markdown
+Atividades de divulgação da ciência.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### [Desenvolvimento de Jogos](gamedev.html)
 
-```markdown
-Syntax highlighted code block
+Alguns dos jogos desenvolvidos por mim.
 
-# Header 1
-## Header 2
-### Header 3
+#### [Jogos Educativos](gamedev/educational.html)
 
-- Bulleted
-- List
+Jogos desenvolvidos por mim com algum objetivo educacional.
+ 
+#### Sobre esse site
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KleberNeves/KleberNeves.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Esse é o meu site pessoal. Minha atividade principal é fazer ciência, mas aqui você vai encontrar várias outras coisas sobre mim e o que eu ando fazendo ou já fiz. Algumas interessantes e possivelmente úteis (espero), assim como outras que você provavelmente não devia ler porque deve existir um uso melhor do seu tempo (o que pode te fazer questionar o motivo de elas estarem aqui em primeiro lugar). O conteúdo do site está em graus diferentes de desatualização em relação à realidade atual. Se quiser entrar em contato, preferencialmente por email: kleber ponto na arroba gmail ponto com - eu quase sempre respondo, ainda que demore.
