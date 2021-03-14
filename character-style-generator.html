@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Character in a New Style Challenge</title>
+  <meta name="description" content="Character + Style: Drawing Ideas">
+  <meta name="author" content="Kleber Neves">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="top">
+  <h2>Character + Style: Drawing Ideas</h2>
+</div>
+
+<div id="gen">
+  <p id="gen_text"></p>
+</div>
+
+<div id="buttons">
+  <div id="buttons_top">
+    <button id="btn_get_both" class="action_btn">Get me a character and a style!</button>
+  </div>
+  
+  <div id="buttons_lower">
+    <button id="btn_get_style" class="action_btn">Get me a style!</button> 
+    <button id="btn_get_character" class="action_btn">Get me a character!</button>
+  </div>
+
+  <div id="buttons_select">
+    <select name="pets" id="decade-select" class="dropdown">
+      <option value="any">Any decade</option>
+      <option value="10">After 2010</option>
+      <option value="00">2000s</option>
+      <option value="90">1990s</option>
+      <option value="80">1980s</option>
+      <option value="70">1970s</option>
+      <option value="old">Before 1970</option>
+    </select>
+  </div>
+</div>
+
+<div id="aboutDiv">
+  <br>
+  <h3>About</h3>
+  
+  <p>
+  This is a drawing ideas generator. You can get ideas for characters, cartoon styles or even a challenge: to draw a particular character in the style of a particular animated show or movie. Data for animated series, movies and characters comes from IMDB.
+  </p>  
+</div>
+
+</div>
+
+  <script src="js/d3.min.js"></script>
+  <script src="js/dsg.js"></script>
+</body>
+</html>
