@@ -1,5 +1,5 @@
 loadData = function() {
-    d3.csv("/data/cartoon-data.csv").then(function(data) {
+    d3.csv("../data/cartoon-data.csv").then(function(data) {
       cartoonAllData = data;
     });
 }

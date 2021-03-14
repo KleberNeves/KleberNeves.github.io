@@ -87,11 +87,9 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-    @import url('/fonts/Ranchers-Regular.ttf');
-
     @font-face {
       font-family: "Ranchers";
-      src: url("/fonts/Ranchers-Regular.ttf");
+      src: url("../fonts/Ranchers-Regular.ttf");
     }
 
     body {
