@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Video Game Name Generator</title>
+  <meta name="description" content="Video Game Name Generator">
+  <meta name="author" content="Kleber Neves">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<div id="container">
+        
+<div id="genDiv">
+    <div id="titleDiv">
+        <a id="titleImg"></a>
+    </div>
+    <div id="btnDiv">
+        <button id="generateBtn">Generate!</a>
+    </div>
+    
+    <div id="optionsDiv">
+        <div>
+        <input id="cb_genre" type="checkbox" checked="true"><span> Generate genre</span></input>
+        <input id="cb_genre2" type="checkbox" checked="true"><span> Allow two genres</span></input>
+        <input id="cb_details" type="checkbox" checked="true"><span> Generate details</span></input>
+        </div>
+        
+        <div>
+        <input id="cb_choose" type="checkbox"><span> Choose a word:</span></input>
+        <input id="tb_word" type="text"></input>
+        </div>
+    </div>
+    
+    <div id="resultDiv">
+        <p id="name"></p>
+    </div>
+    <div id="detailsDiv">
+        <p id="genre"></p>
+        <p id="details"></p>
+    </div>
+</div>
+
+<div id="aboutDiv">
+    <h3>About</h3>
+    
+    <p>
+    This is a videogame name/concept generator. This is intended to help with game design practice, challenges or for inspiration in general. It helps getting you thinking in other directions. There is a total of 4942 words, which the generator can make into 6,326,616,080 different (though, possibly, very similar) game names.
+    </p>   
+    <p>
+    To build this I used an old list of video games from <a href="https://web.archive.org/web/20100304060556/http://www.gamerevolution.com/game/all/all/long_name/asc">Game Revolution</a>, the <a href="http://nltk.org/index.html">NLTK library</a> and the <a href="http://www.freebsd.org/cgi/cvsweb.cgi/src/share/dict/web2?rev=1.12;content-type=text/plain">FreeBSD wordlist</a>.
+
+    Words were parsed from the list, classified and then cross-referenced against the wordlist. That gets you some random strings that mostly sound like videogame names.
+
+    <a href="http://teachingdesign.blogspot.com.br/2007/06/reusable-game-design-exercise-iteration.html">This blog post</a> by Ian Schreiber got me thinking about the second part. The sentences for the mini-description are inspired by the <a href="https://sakai.rutgers.edu/access/content/group/af43d59b-528f-42d0-b8e5-70af85c439dc/reading/hunicke_2004.pdf">MDA framework</a> for game design.
+
+    <p>Code available on <a href="https://github.com/KleberNeves/KleberNeves.github.io">GitHub</a>.</p>
+
+    </p>
+    
+</div>
+
+</div>
+
+  <script src="js/vgng.js"></script>
+</body>
+</html>
