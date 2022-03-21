@@ -1,5 +1,5 @@
 loadData = function() {
-    d3.dsv(";", "/data/sampledb.csv").then(function(data) {
+    d3.dsv(";", "./data/sampledb.csv").then(function(data) {
       paper_data = data;
     });
 }
