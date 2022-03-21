@@ -1,0 +1,155 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Field Identification Trainer</title>
+  <meta name="description" content="Field Identification Trainer">
+  <meta name="author" content="Kleber Neves">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="top">
+  <!--<h2>Field Identification Trainer</h2>-->
+</div>
+
+<div id="paper_box">
+  <p id="paper_title"></p>
+  <p id="paper_abstract"></p>
+</div>
+
+<div id="button_box">
+  <div id="buttons_top_top">
+    <p id="feedback">Which field is this?</p>
+  </div>
+
+  <div id="radio_box">
+    <div class="control-group">
+      <label id = "lopt0" class="control control-radio">
+          ...
+              <input type="radio" id="opt0" name="options" value="0" checked="checked" />
+          <div class="control_indicator"></div>
+      </label>
+
+      <label id = "lopt1" class="control control-radio">
+          ...
+              <input type="radio" id="opt1" name="options" value="1" />
+          <div class="control_indicator"></div>
+      </label>
+
+      <label id = "lopt2" class="control control-radio">
+          ...
+              <input type="radio" id="opt2" name="options" value="2" />
+          <div class="control_indicator"></div>
+      </label>
+
+      <label id = "lopt3" class="control control-radio">
+          ...
+              <input type="radio" id="opt3" name="options" value="3" />
+          <div class="control_indicator"></div>
+      </label>
+    </div>
+  </div>
+  
+  <div id="buttons_mid">
+    <button id="btn_enter" class="action_btn">New paper</button> 
+  
+    <select id="select_field">
+      <option value="ALL" selected>All Fields</option>
+      <option value="Life Sciences">Life Sciences</option>
+      <option value="Physics">Physics</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Mathematics">Mathematics</option>
+      <option value="Geosciences">Geosciences</option>
+    </select> 
+  </div>
+</div>
+
+<div id="statsDiv">
+  <br>
+  <h4>Your stats:</h4>
+  
+  <table id="statsTable">
+  <tr class="tableHeader">
+    <td>Field</td>
+    <td># Questions</td>
+    <td># Correct</td>
+    <td>% Correct</td>
+  </tr>
+  <tr>
+    <td>Life Sciences</td>
+    <td id="LS_Q">0</td>
+    <td id="LS_T">0</td>
+    <td id="LS_P">-</td>
+  </tr>
+  <tr>
+    <td>Physics</td> 
+    <td id="P_Q">0</td>
+    <td id="P_T">0</td>
+    <td id="P_P">-</td>
+  </tr>
+  <tr>
+    <td>Chemistry</td> 
+    <td id="C_Q">0</td>
+    <td id="C_T">0</td>
+    <td id="C_P">-</td>
+  </tr>
+  <tr>
+    <td>Computer Science</td> 
+    <td id="CS_Q">0</td>
+    <td id="CS_T">0</td>
+    <td id="CS_P">-</td>
+  </tr>
+  <tr>
+    <td>Mathematics</td> 
+    <td id="M_Q">0</td>
+    <td id="M_T">0</td>
+    <td id="M_P">-</td>
+  </tr>
+  <tr>
+    <td>Geosciences</td> 
+    <td id="G_Q">0</td>
+    <td id="G_T">0</td>
+    <td id="G_P">-</td>
+  </tr>
+  <tr class="overall_row">
+    <td>Overall</td>
+    <td id="O_Q">0</td>
+    <td id="O_T">0</td>
+    <td id="O_P">-</td>
+  </tr>
+</table>
+  
+</div>
+
+<div id="aboutDiv">
+  <br>
+  <h4>About</h4>
+  
+  <p>
+  ...
+  </p>
+</div>
+
+</div>
+
+  <script src="js/d3.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
