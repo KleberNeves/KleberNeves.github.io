@@ -1,0 +1,158 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Jogo do Argumento</title>
+  <meta name="description" content="Jogo do Argumento">
+  <meta name="author" content="Kleber Neves">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="top">
+  <h2>Jogo do Argumento</h2>
+</div>
+
+<div id="gen">
+  <div id="task">
+    <p id="task_text" class="generated_text"></p>
+  </div>
+  
+  <br>
+  
+  <div id="cards1">
+    <p id="cards1_text" class="generated_text"></p>  
+  </div>
+  <div id="cards2">
+    <p id="cards2_text" class="generated_text"></p>
+  </div>
+  
+</div>
+
+<div id="buttons">
+  <div id="buttons_top">
+    <button id="btn_new" class="action_btn">Gerar nova situação</button>
+  </div>
+  
+  <div id="checkboxes1">
+    <label>Personagens</label><br>
+
+    <input type="checkbox" name="categories" id="category-artes" value="artes" checked>
+    <label for="category-artes">Artes</label><br>
+
+    <input type="checkbox" name="categories" id="category-atores_intl" value="atores_intl" checked>
+    <label for="category-atores_intl">Atores e Diretores (Internacional)</label><br>
+
+    <input type="checkbox" name="categories" id="category-auto" value="auto" checked>
+    <label for="category-auto">Auto-referente</label><br>
+
+    <input type="checkbox" name="categories" id="category-brasil" value="brasil" checked>
+    <label for="category-brasil">Celebridades Brasileiras</label><br>
+
+    <input type="checkbox" name="categories" id="category-ciencia" value="ciencia" checked>
+    <label for="category-ciencia">Ciência</label><br>
+
+    <input type="checkbox" name="categories" id="category-desenhos" value="desenhos" checked>
+    <label for="category-desenhos">Desenhos</label><br>
+
+    <input type="checkbox" name="categories" id="category-esportes" value="esportes" checked>
+    <label for="category-esportes">Esportes</label><br>
+
+    <input type="checkbox" name="categories" id="category-filmes" value="filmes" checked>
+    <label for="category-filmes">Filmes</label><br>
+
+    <input type="checkbox" name="categories" id="category-animacoes" value="animacoes" checked>
+    <label for="category-animacoes">Filmes (Animações)</label><br>
+
+    <input type="checkbox" name="categories" id="category-filosofia" value="filosofia" checked>
+    <label for="category-filosofia">Filosofia</label><br>
+
+    <input type="checkbox" name="categories" id="category-historia" value="historia" checked>
+    <label for="category-historia">História</label><br>
+
+    <input type="checkbox" name="categories" id="category-jogos" value="jogos" checked>
+    <label for="category-jogos">Jogos</label><br>
+</div>
+  
+  <div id="checkboxes2">
+
+    <input type="checkbox" name="categories" id="category-musica_intl" value="musica_intl" checked>
+    <label for="category-musica_intl">Música (Internacional)</label><br>
+
+    <input type="checkbox" name="categories" id="category-negocios" value="negocios" checked>
+    <label for="category-negocios">Negócios</label><br>
+
+    <input type="checkbox" name="categories" id="category-politica" value="politica" checked>
+    <label for="category-politica">Política (Internacional)</label><br>
+
+    <input type="checkbox" name="categories" id="category-herois" value="herois" checked>
+    <label for="category-herois">Super Heróis</label><br>
+
+    <input type="checkbox" name="categories" id="category-tv_br" value="tv_br" checked>
+    <label for="category-tv_br">TV Brasileira</label><br>
+
+    <input type="checkbox" name="categories" id="category-tv_intl" value="tv_intl" checked>
+    <label for="category-tv_intl">TV Internacional</label><br>
+
+    <label>Tarefas</label><br>
+
+    <input type="checkbox" name="categories" id="category-fisicas" value="fisicas" checked>
+    <label for="category-fisicas">Físicas</label><br>
+
+    <input type="checkbox" name="categories" id="category-criativas" value="criativas" checked>
+    <label for="category-criativas">Criativas</label><br>
+
+    <input type="checkbox" name="categories" id="category-intelectuais" value="intelectuais" checked>
+    <label for="category-intelectuais">Intelectuais</label><br>
+
+    <input type="checkbox" name="categories" id="category-cotidiano" value="cotidiano" checked>
+    <label for="category-cotidiano">Cotidiano</label><br>
+
+    <input type="checkbox" name="categories" id="category-tecnicas" value="tecnicas" checked>
+    <label for="category-tecnicas">Técnicas</label><br>
+
+    <input type="checkbox" name="categories" id="category-misc" value="misc" checked>
+    <label for="category-misc">Miscelânea</label><br>
+
+    </div>
+  
+  </div>
+</div>
+
+<div id="aboutDiv">
+  <br>
+  <h3>About</h3>
+  
+  <p>
+  Regras:
+
+  A cada rodada, duas pessoas discutem que personagem faria melhor a tarefa dada. Cada pessoa recebe cinco opções de personagens e escolhe um deles para defender.
+
+  Caso tenha mais pessoas no jogo, as que estão de fora votam para escolher o melhor argumento. Caso só tenha duas pessoas jogando, ninguém ganha, vocês discutem só pela jornada.
+  </p>
+
+  <p>
+    Code available on <a href="https://github.com/KleberNeves/KleberNeves.github.io">GitHub</a>.
+  </p>
+</div>
+
+</div>
+  <script src="js/d3.min.js" type="text/javascript"></script>
+  <script src="js/arggame.js" type="text/javascript"></script>
+</body>
+</html>
