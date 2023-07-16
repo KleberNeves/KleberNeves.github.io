@@ -27,10 +27,6 @@ generateArgument = function() {
     
     var selected_task = taskData[Math.floor(Math.random() * taskData.length)].task
 
-    console.log(cards1)
-    console.log(cards2)
-    console.log(selected_task)
-
     pcards1.innerHTML = cards1.join("<br>")
     pcards2.innerHTML = cards2.join("<br>")
     ptask.innerHTML = selected_task

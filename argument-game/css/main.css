@@ -197,8 +197,8 @@ textarea {
     }
 
     #buttons_top > button {
-        display: block;
-        margin: 0 auto;
+      display: block;
+      margin: 0 auto;
     }
 
     #checkboxes1 {
@@ -212,7 +212,7 @@ textarea {
     }
 
     .generated_text {
-      font-size: 18px;
+      font-size: 15px;
       text-align: center;
       vertical-align: center;
       line-height: 30px;
@@ -237,8 +237,8 @@ textarea {
       display: inline-block;
       text-align: left;
       font-size: 24px;
-      letter-spacing: 1px;
-      width: calc(50% - 4px);
+      letter-spacing: 2px;
+      width: calc(75% - 4px);
       cursor: pointer;
       padding-top: 5px;
       color: #000000;
@@ -252,13 +252,15 @@ textarea {
       background: #c4e368;
     }
 
-    #aboutDiv > h3 {
-      font-size: 14px;
-      text-align: center;
+    #aboutDiv {
+      display: inline-block;
+      margin: 24px auto;
+      width: 750px;
     }
 
     #aboutDiv > p {
-      font-size: 12px;
+      margin: auto;
+      font-size: 14px;
       text-align: center;
     }
 

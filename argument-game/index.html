@@ -24,31 +24,33 @@
 
 <div id="container">
 
-<div id="top">
-  <h2>Jogo do Argumento</h2>
-</div>
+  <div id="top">
+    <h2>Jogo do Argumento</h2>
+  </div>
 
-<div id="gen">
-  <div id="task">
-    <p id="task_text" class="generated_text"></p>
-  </div>
-  
-  <br>
-  
-  <div id="cards1">
-    <p id="cards1_text" class="generated_text"></p>  
-  </div>
-  <div id="cards2">
-    <p id="cards2_text" class="generated_text"></p>
-  </div>
-  
-</div>
+  <div id="gen">
+    <div id="task">
+      <p id="task_text" class="generated_text"></p>
+    </div>
 
-<div id="buttons">
-  <div id="buttons_top">
-    <button id="btn_new" class="action_btn">Gerar nova situação</button>
+    <br>
+
+    <div id="cards1">
+      <p id="cards1_text" class="generated_text"></p>  
+    </div>
+    <div id="cards2">
+      <p id="cards2_text" class="generated_text"></p>
+    </div>
   </div>
-  
+
+  <div id="buttons">
+    <div id="buttons_top">
+      <button id="btn_new" class="action_btn">Gerar nova situação</button>
+    </div>
+
+
+  </div>
+
   <div id="checkboxes1">
     <label>Personagens</label><br>
 
@@ -87,10 +89,9 @@
 
     <input type="checkbox" name="categories" id="category-jogos" value="jogos" checked>
     <label for="category-jogos">Jogos</label><br>
-</div>
-  
-  <div id="checkboxes2">
+  </div>
 
+  <div id="checkboxes2">
     <input type="checkbox" name="categories" id="category-musica_intl" value="musica_intl" checked>
     <label for="category-musica_intl">Música (Internacional)</label><br>
 
@@ -111,47 +112,39 @@
 
     <label>Tarefas</label><br>
 
-    <input type="checkbox" name="categories" id="category-fisicas" value="fisicas" checked>
-    <label for="category-fisicas">Físicas</label><br>
+    <input type="checkbox" name="categories" id="category-intelectual" value="intelectual" checked>
+    <label for="category-intelectual">Intelectual/Técnica</label><br>
 
     <input type="checkbox" name="categories" id="category-criativas" value="criativas" checked>
-    <label for="category-criativas">Criativas</label><br>
+    <label for="category-criativas">Criativa/Artística</label><br>
 
-    <input type="checkbox" name="categories" id="category-intelectuais" value="intelectuais" checked>
-    <label for="category-intelectuais">Intelectuais</label><br>
+    <input type="checkbox" name="categories" id="category-sobrenatural" value="sobrenatural" checked>
+    <label for="category-sobrenatural">Fantasia/Sobrenatural</label><br>
+
+    <input type="checkbox" name="categories" id="category-fisica" value="fisica" checked>
+    <label for="category-fisica">Física/Esportes</label><br>
+
+    <input type="checkbox" name="categories" id="category-social" value="social" checked>
+    <label for="category-social">Social/Interpessoal</label><br>
 
     <input type="checkbox" name="categories" id="category-cotidiano" value="cotidiano" checked>
     <label for="category-cotidiano">Cotidiano</label><br>
 
-    <input type="checkbox" name="categories" id="category-tecnicas" value="tecnicas" checked>
-    <label for="category-tecnicas">Técnicas</label><br>
+    <input type="checkbox" name="categories" id="category-outra" value="outra" checked>
+    <label for="category-outra">Outra</label><br>
+  </div>
 
-    <input type="checkbox" name="categories" id="category-misc" value="misc" checked>
-    <label for="category-misc">Miscelânea</label><br>
+  <div id="aboutDiv">
 
-    </div>
-  
+    <p><b>Regras</b></p>
+    <br>
+    <p>A cada rodada, duas pessoas discutem que personagem faria melhor a tarefa dada. Cada pessoa recebe cinco opções de personagens e escolhe um deles para defender. Caso tenha mais pessoas no jogo, as que estão de fora votam para escolher o melhor argumento. Caso só tenha duas pessoas jogando, ninguém ganha, vocês discutem só pela jornada.</p>
+    <br>
+    <p>Code available on <a href="https://github.com/KleberNeves/KleberNeves.github.io">GitHub</a>.</p>
   </div>
 </div>
 
-<div id="aboutDiv">
-  <br>
-  <h3>About</h3>
-  
-  <p>
-  Regras:
 
-  A cada rodada, duas pessoas discutem que personagem faria melhor a tarefa dada. Cada pessoa recebe cinco opções de personagens e escolhe um deles para defender.
-
-  Caso tenha mais pessoas no jogo, as que estão de fora votam para escolher o melhor argumento. Caso só tenha duas pessoas jogando, ninguém ganha, vocês discutem só pela jornada.
-  </p>
-
-  <p>
-    Code available on <a href="https://github.com/KleberNeves/KleberNeves.github.io">GitHub</a>.
-  </p>
-</div>
-
-</div>
   <script src="js/d3.min.js" type="text/javascript"></script>
   <script src="js/arggame.js" type="text/javascript"></script>
 </body>
