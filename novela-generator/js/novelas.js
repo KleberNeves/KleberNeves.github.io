@@ -21,7 +21,23 @@ generate_name = function(chosen_word) {
 		"XXX E XXX",
 		"XXXs E XXXs",
 		"NOME",
-		"NOME, A XXX"
+		"NOME, A XXX",
+		"O XXX YYY",
+		"A XXX YYY",
+		"OS XXX YYY",
+		"AS XXX YYY",
+		"O YYY XXX",
+		"A YYY XXX",
+		"OS YYY XXX",
+		"AS YYY XXX",
+		"XXX E XXX",
+		"XXXs E XXXs",
+		"NOME",
+		"NOME, A XXX",
+		"O XXX YYY",
+		"A XXX YYY",
+		"OS XXX YYY",
+		"AS XXX YYY"
     ]
     
 	var template = rnd(templates);
