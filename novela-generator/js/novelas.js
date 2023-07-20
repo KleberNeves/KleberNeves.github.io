@@ -53,7 +53,8 @@ generate_name = function(chosen_word) {
 			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "O " + rnd(x) + " " + rnd(y)
+    		if (Math.random() > 0.5) { name = "O " } else { name = "" }
+			name += rnd(x) + " " + rnd(y)
 		break;
 		case "A XXX YYY":
 			var x = novelaData.map(d => d['NOME A']);
@@ -64,7 +65,8 @@ generate_name = function(chosen_word) {
 			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "A " + rnd(x) + " " + rnd(y)
+			if (Math.random() > 0.5) { name = "A " } else { name = "" }
+			name += rnd(x) + " " + rnd(y)
 		break;
 		case "OS XXX YYY":
 			var x = novelaData.map(d => d['NOME OS']);
@@ -75,7 +77,8 @@ generate_name = function(chosen_word) {
 			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "Os " + rnd(x) + " " + rnd(y)
+    		if (Math.random() > 0.5) { name = "Os " } else { name = "" }
+			name += rnd(x) + " " + rnd(y)
 		break;
 		case "AS XXX YYY":
 			var x = novelaData.map(d => d['NOME AS']);
@@ -86,35 +89,40 @@ generate_name = function(chosen_word) {
 			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "As " + rnd(x) + " " + rnd(y)
+    		if (Math.random() > 0.5) { name = "As " } else { name = "" }
+			name += rnd(x) + " " + rnd(y)
 		break;
 		case "O YYY XXX":
 			var x = novelaData.map(d => d['NOME O']);
 			var y = novelaData.map(d => d['O ADJ PRE']);
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "O " + rnd(y) + " " + rnd(x)
+			if (Math.random() > 0.5) { name = "O " } else { name = "" }
+			name += rnd(y) + " " + rnd(x)
 		break;
 		case "A YYY XXX":
 			var x = novelaData.map(d => d['NOME A']);
 			var y = novelaData.map(d => d['A ADJ PRE']);
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "A " + rnd(y) + " " + rnd(x)
+			if (Math.random() > 0.5) { name = "A " } else { name = "" }
+			name += rnd(y) + " " + rnd(x)
 		break;
 		case "OS YYY XXX":
 			var x = novelaData.map(d => d['NOME OS']);
 			var y = novelaData.map(d => d['OS ADJ PRE']);
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "Os " + rnd(y) + " " + rnd(x)
+			if (Math.random() > 0.5) { name = "Os " } else { name = "" }
+			name += rnd(y) + " " + rnd(x)
 		break;
 		case "AS YYY XXX":
 			var x = novelaData.map(d => d['NOME AS']);
 			var y = novelaData.map(d => d['AS ADJ PRE']);
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
-			name = "As " + rnd(y) + " " + rnd(x)
+			if (Math.random() > 0.5) { name = "As " } else { name = "" }
+			name += rnd(y) + " " + rnd(x)
 		break;
 		case "XXX E XXX":
 			var x1 = novelaData.map(d => d['NOME O']);
