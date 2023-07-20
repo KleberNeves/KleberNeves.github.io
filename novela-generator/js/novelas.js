@@ -48,7 +48,9 @@ generate_name = function(chosen_word) {
 			var x = novelaData.map(d => d['NOME O']);
 			var y1 = novelaData.map(d => d['O ADJ POST']);
 			var y2 = novelaData.map(d => d['Q POST']);
+			var y3 = novelaData.map(d => d['Q POST']);
 			var y = y1.concat(y2)
+			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
 			name = "O " + rnd(x) + " " + rnd(y)
@@ -57,7 +59,9 @@ generate_name = function(chosen_word) {
 			var x = novelaData.map(d => d['NOME A']);
 			var y1 = novelaData.map(d => d['A ADJ POST']);
 			var y2 = novelaData.map(d => d['Q POST']);
+			var y3 = novelaData.map(d => d['Q POST']);
 			var y = y1.concat(y2)
+			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
 			name = "A " + rnd(x) + " " + rnd(y)
@@ -66,7 +70,9 @@ generate_name = function(chosen_word) {
 			var x = novelaData.map(d => d['NOME OS']);
 			var y1 = novelaData.map(d => d['OS ADJ POST']);
 			var y2 = novelaData.map(d => d['Q POST']);
+			var y3 = novelaData.map(d => d['Q POST']);
 			var y = y1.concat(y2)
+			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
 			name = "Os " + rnd(x) + " " + rnd(y)
@@ -75,7 +81,9 @@ generate_name = function(chosen_word) {
 			var x = novelaData.map(d => d['NOME AS']);
 			var y1 = novelaData.map(d => d['AS ADJ POST']);
 			var y2 = novelaData.map(d => d['Q POST']);
+			var y3 = novelaData.map(d => d['Q POST']);
 			var y = y1.concat(y2)
+			y = y.concat(y3)
 			x = x.filter(item => item !== '')
     		y = y.filter(item => item !== '')
 			name = "As " + rnd(x) + " " + rnd(y)
