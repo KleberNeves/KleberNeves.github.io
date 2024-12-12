@@ -31,7 +31,7 @@
             <input type="text" class="form-control" placeholder="Jogador 1" id="player1">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player1">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player1">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -39,7 +39,7 @@
             <input type="text" class="form-control" placeholder="Jogador 2" id="player2">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player2">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player2">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -47,7 +47,7 @@
             <input type="text" class="form-control" placeholder="Jogador 3" id="player3">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player3">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player3">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -55,7 +55,7 @@
             <input type="text" class="form-control" placeholder="Jogador 4" id="player4">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player4">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player4">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -63,7 +63,7 @@
             <input type="text" class="form-control" placeholder="Jogador 5" id="player5">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player5">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player5">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -71,7 +71,7 @@
             <input type="text" class="form-control" placeholder="Jogador 6" id="player6">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player6">Select</button>
+            <button class="btn btn-primary player-select-btn" data-player="player6">Selecionar</button>
           </div>
         </div>
       </div>
@@ -99,20 +99,20 @@
 
     <!-- Control Buttons -->
     <div class="mb-3">
-      <button class="btn btn-warning" id="summary-btn" data-bs-toggle="modal"
-        data-bs-target="#summary-modal">Estatísticas</button>
+      <button class="btn btn-warning" id="summary-btn" data-bs-toggle="modal" data-bs-target="#summary-modal">Calcular
+        estatísticas</button>
+    </div>
+
+    <div class="mb-1">
+      <div class="col-2">
+        <input type="text" class="form-control" placeholder="Jogo 1 Set 1" id="setname">
       </div>
-      
-      <div class="mb-1">
-        <div class="col-2">
-          <input type="text" class="form-control" placeholder="Jogo 1 Set 1" id="setname">
-        </div>
+    </div>
+    <div class="mb-2">
+      <div class="col-4">
+        <button class="btn btn-secondary" id="download-btn">Baixar dados</button>
+        <button class="btn btn-secondary" id="reset-btn">Resetar</button>
       </div>
-      <div class="mb-2">
-        <div class="col-4">
-          <button class="btn btn-secondary" id="download-btn">Baixar dados</button>
-          <button class="btn btn-secondary" id="reset-btn">Resetar</button>
-        </div>
     </div>
 
     <!-- Summary Modal -->
@@ -137,6 +137,7 @@
     <script>
       let records = [];
       let selectedPlayer = null;
+      let playerSummaries = [];
 
       document.querySelectorAll('.player-select-btn').forEach(button => {
         button.addEventListener('click', () => {
@@ -178,20 +179,25 @@
       });
 
       document.getElementById('download-btn').addEventListener('click', () => {
-        if (length(records) == 0) {
-          showAlert('Nenhuma ação registrada.', 'danger');
+        if (records.length == 0) {
+          showAlert('Nenhuma ação foi registrada ainda.', 'danger');
           return;
         }
-        
+
+        if (playerSummaries.length == 0) {
+          showAlert('É necessário calcular as estatísticas antes.', 'danger');
+          return;
+        }
+
         // Convert JSON to CSV
-        const headers = Object.keys(records[0]); // Get the headers from the first record
-        const rows = records.map(record => headers.map(header => record[header]).join(',')); // Convert each record to a CSV row
+        const headers = Object.keys(playerSummaries[0]); // Get the headers from the first record
+        const rows = playerSummaries.map(ps => headers.map(header => ps[header]).join(',')); // Convert each record to a CSV row
         const csvContent = [headers.join(','), ...rows].join('\n'); // Combine headers and rows with line breaks
 
         // Create a blob with the CSV content
         const blob = new Blob([csvContent], { type: 'text/csv' });
 
-        
+
 
         // Create a download link and trigger the download
         var fn = document.getElementById('setname').value;
@@ -230,10 +236,28 @@
         </tr>`;
         summaryTableBody.innerHTML = headerRow;
 
+        playerSummaries = [];
+
         // Create rows for each player
         Object.keys(summary).forEach(player => {
           const row = document.createElement('tr');
           console.log(summary[player][""]);
+
+          actions.map(action => {
+            const correct = summary[player][action].correct;
+            const incorrect = summary[player][action].incorrect;
+            const total = correct + incorrect;
+
+            playerSummaries.push({
+              "Jogador": player,
+              "Ação": action,
+              "Corretas": correct,
+              "Total": total
+            });
+          })
+          console.log('summaries');
+          console.log(playerSummaries);
+
           row.innerHTML = `
             <td>${player}</td>
             ${actions.map(action => {
@@ -243,6 +267,7 @@
             const perc = (correct / total);
             const correctPercent = total ? (perc * 100).toFixed(0) : '0';
             const sty = perc > 0.8 ? 'color: #088a13; font-weight: bold;' : (perc < 0.3 ? 'color: #960909; font-weight: bold;' : 'color: #353535; font-weight: normal;')
+
             return `<td style='${sty}'>${correctPercent}% (${correct}/${total})</td>`;
           }).join('')}
         `;
