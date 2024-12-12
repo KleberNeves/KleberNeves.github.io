@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scout Vôlei</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #bac5c7;
+    }
+
+    .selected {
+      background-color: #72dbee;
+      color: #203a72;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Scout Vôlei</h1>
+
+    <div class="row">
+      <!-- Player Input and Selection -->
+      <div id="players-section" class="col-md-6 mb-4">
+        <h3>Jogadores</h3>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 1" id="player1">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player1">Select</button>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 2" id="player2">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player2">Select</button>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 3" id="player3">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player3">Select</button>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 4" id="player4">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player4">Select</button>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 5" id="player5">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player5">Select</button>
+          </div>
+        </div>
+        <div class="row mb-2">
+          <div class="col-8">
+            <input type="text" class="form-control" placeholder="Jogador 6" id="player6">
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary player-select-btn" data-player="player6">Select</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div id="actions-section" class="col-md-6 mb-4">
+        <h3>Ações</h3>
+        <div class="mb-2">
+          <button class="btn btn-success action-btn" data-action="correct-Toque">Toque</button>
+          <button class="btn btn-success action-btn" data-action="correct-Passe">Passe</button>
+          <button class="btn btn-success action-btn" data-action="correct-Ataque">Ataque</button>
+          <button class="btn btn-success action-btn" data-action="correct-Saque">Saque</button>
+          <button class="btn btn-success action-btn" data-action="correct-Bloqueio">Bloqueio</button>
+        </div>
+        <div class="mb-2">
+          <button class="btn btn-danger action-btn" data-action="incorrect-Toque">Toque</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Passe">Passe</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Ataque">Ataque</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Saque">Saque</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Bloqueio">Bloqueio</button>
+        </div>
+        <div id="alert-section" class="mt-5"></div>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="mb-3">
+      <button class="btn btn-warning" id="summary-btn" data-bs-toggle="modal"
+        data-bs-target="#summary-modal">Estatísticas</button>
+      </div>
+      
+      <div class="mb-1">
+        <div class="col-2">
+          <input type="text" class="form-control" placeholder="Jogo 1 Set 1" id="setname">
+        </div>
+      </div>
+      <div class="mb-2">
+        <div class="col-4">
+          <button class="btn btn-secondary" id="download-btn">Baixar dados</button>
+          <button class="btn btn-secondary" id="reset-btn">Resetar</button>
+        </div>
+    </div>
+
+    <!-- Summary Modal -->
+    <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="summary-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="summary-modal-label">Estatísticas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody id="summary-table-body">
+                <!-- Summary data goes here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let records = [];
+      let selectedPlayer = null;
+
+      document.querySelectorAll('.player-select-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.form-control').forEach(input => input.classList.remove('selected'));
+          document.querySelectorAll('.player-select-btn').forEach(input => input.classList.remove('selected'));
+          const playerInput = document.getElementById(button.getAttribute('data-player'));
+          selectedPlayer = playerInput.value;
+          playerInput.classList.add('selected');
+          button.classList.add('selected');
+        });
+      });
+
+      document.querySelectorAll('.action-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          if (selectedPlayer) {
+            const [type, action] = button.getAttribute('data-action').split('-');
+            records.push({
+              index: records.length + 1,
+              player: selectedPlayer,
+              action: action,
+              type: type
+            });
+            showAlert('Registro salvo!', 'success');
+            console.log(records);
+          } else {
+            showAlert('Precisa escolher um jogador com nome antes.', 'danger');
+          }
+        });
+      });
+
+      document.getElementById('reset-btn').addEventListener('click', () => {
+        records = [];
+        selectedPlayer = null;
+        document.querySelectorAll('.form-control').forEach(input => {
+          input.value = '';
+          input.classList.remove('selected');
+        });
+        showAlert('Registros de ações e nomes dos jogadores resetados.', 'warning');
+      });
+
+      document.getElementById('download-btn').addEventListener('click', () => {
+        if (length(records) == 0) {
+          showAlert('Nenhuma ação registrada.', 'danger');
+          return;
+        }
+        
+        // Convert JSON to CSV
+        const headers = Object.keys(records[0]); // Get the headers from the first record
+        const rows = records.map(record => headers.map(header => record[header]).join(',')); // Convert each record to a CSV row
+        const csvContent = [headers.join(','), ...rows].join('\n'); // Combine headers and rows with line breaks
+
+        // Create a blob with the CSV content
+        const blob = new Blob([csvContent], { type: 'text/csv' });
+
+        
+
+        // Create a download link and trigger the download
+        var fn = document.getElementById('setname').value;
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `${fn}.csv`;
+        link.click();
+      });
+
+      document.getElementById('summary-btn').addEventListener('click', () => {
+        const summary = {};
+
+        // Aggregate the records
+        records.forEach(record => {
+          if (!summary[record.player]) {
+            summary[record.player] = {
+              Toque: { correct: 0, incorrect: 0 },
+              Passe: { correct: 0, incorrect: 0 },
+              Ataque: { correct: 0, incorrect: 0 },
+              Saque: { correct: 0, incorrect: 0 },
+              Bloqueio: { correct: 0, incorrect: 0 }
+            };
+          }
+          summary[record.player][record.action][record.type]++;
+        });
+
+        const summaryTableBody = document.getElementById('summary-table-body');
+        summaryTableBody.innerHTML = ''; // Clear previous summary
+
+        // Create header row dynamically
+        const actions = ["Toque", "Passe", "Ataque", "Saque", "Bloqueio"];
+        const headerRow = `
+        <tr>
+            <th>Jogador</th>
+            ${actions.map(action => `<th>${action.charAt(0).toUpperCase() + action.slice(1)}</th>`).join('')}
+        </tr>`;
+        summaryTableBody.innerHTML = headerRow;
+
+        // Create rows for each player
+        Object.keys(summary).forEach(player => {
+          const row = document.createElement('tr');
+          console.log(summary[player][""]);
+          row.innerHTML = `
+            <td>${player}</td>
+            ${actions.map(action => {
+            const correct = summary[player][action].correct;
+            const incorrect = summary[player][action].incorrect;
+            const total = correct + incorrect;
+            const perc = (correct / total);
+            const correctPercent = total ? (perc * 100).toFixed(0) : '0';
+            const sty = perc > 0.8 ? 'color: #088a13; font-weight: bold;' : (perc < 0.3 ? 'color: #960909; font-weight: bold;' : 'color: #353535; font-weight: normal;')
+            return `<td style='${sty}'>${correctPercent}% (${correct}/${total})</td>`;
+          }).join('')}
+        `;
+          summaryTableBody.appendChild(row);
+        });
+      });
+
+      function showAlert(message, type) {
+        const alertSection = document.getElementById('alert-section');
+        alertSection.innerHTML = `
+                    <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                        ${message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `;
+      }
+    </script>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
