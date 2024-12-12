@@ -15,6 +15,36 @@
       background-color: #72dbee;
       color: #203a72;
     }
+
+    .tbl-th-player {
+      background-color: #202020 !important;
+      color: #ffffff !important;
+    }
+
+    .tbl-th-perc {
+      background-color: #123522 !important;
+      color: #ffffff !important;
+    }
+
+    .tbl-th-score {
+      background-color: #131e30 !important;
+      color: #ffffff !important;
+    }
+
+    .tbl-td-player {
+      background-color: #dadada !important;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      text-align: center;
+      vertical-align: middle;
+    }
+
   </style>
 </head>
 
@@ -31,7 +61,7 @@
             <input type="text" class="form-control" placeholder="Jogador 1" id="player1">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player1">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player1">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -39,7 +69,7 @@
             <input type="text" class="form-control" placeholder="Jogador 2" id="player2">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player2">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player2">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -47,7 +77,7 @@
             <input type="text" class="form-control" placeholder="Jogador 3" id="player3">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player3">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player3">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -55,7 +85,7 @@
             <input type="text" class="form-control" placeholder="Jogador 4" id="player4">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player4">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player4">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -63,7 +93,7 @@
             <input type="text" class="form-control" placeholder="Jogador 5" id="player5">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player5">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player5">Selecionar</button>
           </div>
         </div>
         <div class="row mb-2">
@@ -71,29 +101,36 @@
             <input type="text" class="form-control" placeholder="Jogador 6" id="player6">
           </div>
           <div class="col-4">
-            <button class="btn btn-primary player-select-btn" data-player="player6">Selecionar</button>
+            <button class="btn btn-light player-select-btn" data-player="player6">Selecionar</button>
           </div>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div id="actions-section" class="col-md-6 mb-4">
-        <h3>Ações</h3>
+        <h4>Sucesso</h4>
         <div class="mb-2">
-          <button class="btn btn-success action-btn" data-action="correct-Toque">Toque</button>
-          <button class="btn btn-success action-btn" data-action="correct-Passe">Passe</button>
-          <button class="btn btn-success action-btn" data-action="correct-Ataque">Ataque</button>
           <button class="btn btn-success action-btn" data-action="correct-Saque">Saque</button>
+          <button class="btn btn-success action-btn" data-action="correct-Ataque">Ataque</button>
           <button class="btn btn-success action-btn" data-action="correct-Bloqueio">Bloqueio</button>
+          <button class="btn btn-success action-btn" data-action="correct-Recepcao">Recepção</button>
+          <button class="btn btn-success action-btn" data-action="correct-Defesa">Defesa</button>
         </div>
+        <h4>Erro</h4>
         <div class="mb-2">
-          <button class="btn btn-danger action-btn" data-action="incorrect-Toque">Toque</button>
-          <button class="btn btn-danger action-btn" data-action="incorrect-Passe">Passe</button>
-          <button class="btn btn-danger action-btn" data-action="incorrect-Ataque">Ataque</button>
           <button class="btn btn-danger action-btn" data-action="incorrect-Saque">Saque</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Ataque">Ataque</button>
           <button class="btn btn-danger action-btn" data-action="incorrect-Bloqueio">Bloqueio</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Recepcao">Recepção</button>
+          <button class="btn btn-danger action-btn" data-action="incorrect-Defesa">Defesa</button>
         </div>
-        <div id="alert-section" class="mt-5"></div>
+        <h4>Ponto</h4>
+        <div class="mb-2">
+          <button class="btn btn-primary action-btn" data-action="score-Saque">Saque</button>
+          <button class="btn btn-primary action-btn" data-action="score-Ataque">Ataque</button>
+          <button class="btn btn-primary action-btn" data-action="score-Bloqueio">Bloqueio</button>
+        </div>
+        <div id="alert-section" class="mt-4"></div>
       </div>
     </div>
 
@@ -104,12 +141,12 @@
     </div>
 
     <div class="mb-1">
-      <div class="col-2">
+      <div class="col-6">
         <input type="text" class="form-control" placeholder="Jogo 1 Set 1" id="setname">
       </div>
     </div>
     <div class="mb-2">
-      <div class="col-4">
+      <div class="col-6">
         <button class="btn btn-secondary" id="download-btn">Baixar dados</button>
         <button class="btn btn-secondary" id="reset-btn">Resetar</button>
       </div>
@@ -117,7 +154,7 @@
 
     <!-- Summary Modal -->
     <div class="modal fade" id="summary-modal" tabindex="-1" aria-labelledby="summary-modal-label" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="summary-modal-label">Estatísticas</h5>
@@ -160,8 +197,7 @@
               action: action,
               type: type
             });
-            showAlert('Registro salvo!', 'success');
-            console.log(records);
+            showAlert(`Registro salvo! ${records.length}. ${selectedPlayer} - ${action}`, 'success');
           } else {
             showAlert('Precisa escolher um jogador com nome antes.', 'danger');
           }
@@ -197,8 +233,6 @@
         // Create a blob with the CSV content
         const blob = new Blob([csvContent], { type: 'text/csv' });
 
-
-
         // Create a download link and trigger the download
         var fn = document.getElementById('setname').value;
         const link = document.createElement('a');
@@ -214,62 +248,76 @@
         records.forEach(record => {
           if (!summary[record.player]) {
             summary[record.player] = {
-              Toque: { correct: 0, incorrect: 0 },
-              Passe: { correct: 0, incorrect: 0 },
-              Ataque: { correct: 0, incorrect: 0 },
-              Saque: { correct: 0, incorrect: 0 },
-              Bloqueio: { correct: 0, incorrect: 0 }
+              Saque: { correct: 0, incorrect: 0, score: 0 },
+              Ataque: { correct: 0, incorrect: 0, score: 0 },
+              Bloqueio: { correct: 0, incorrect: 0, score: 0 },
+              Recepcao: { correct: 0, incorrect: 0, score: 0 },
+              Defesa: { correct: 0, incorrect: 0, score: 0 }
             };
           }
           summary[record.player][record.action][record.type]++;
         });
-
+        console.log(summary);
         const summaryTableBody = document.getElementById('summary-table-body');
         summaryTableBody.innerHTML = ''; // Clear previous summary
 
         // Create header row dynamically
-        const actions = ["Toque", "Passe", "Ataque", "Saque", "Bloqueio"];
+        const actions = ["Saque", "Ataque", "Bloqueio", "Recepcao", "Defesa"];
         const headerRow = `
         <tr>
-            <th>Jogador</th>
-            ${actions.map(action => `<th>${action.charAt(0).toUpperCase() + action.slice(1)}</th>`).join('')}
+            <th class='tbl-th-player'>Jogador</th>
+            ${actions.map(action => `<th class="tbl-th-perc">${action == "Recepcao" ? "Recepção" : action}</th>`).concat(
+              ["<th class='tbl-th-score'>Pontos de Saque</th>", "<th class='tbl-th-score'>Pontos de Ataque</th>", "<th class='tbl-th-score'>Pontos de Bloqueio</th>"]).join('')}
         </tr>`;
         summaryTableBody.innerHTML = headerRow;
 
         playerSummaries = [];
-
+        console.log(playerSummaries);
         // Create rows for each player
         Object.keys(summary).forEach(player => {
           const row = document.createElement('tr');
-          console.log(summary[player][""]);
 
           actions.map(action => {
             const correct = summary[player][action].correct;
             const incorrect = summary[player][action].incorrect;
             const total = correct + incorrect;
+            const score = summary[player][action].score;
 
             playerSummaries.push({
               "Jogador": player,
-              "Ação": action,
+              "Ação": action == "Recepcao" ? "Recepção" : action,
               "Corretas": correct,
+              "Pontos": score,
               "Total": total
             });
           })
-          console.log('summaries');
-          console.log(playerSummaries);
 
           row.innerHTML = `
-            <td>${player}</td>
+            <td class='tbl-td-player'>${player}</td>
             ${actions.map(action => {
             const correct = summary[player][action].correct;
             const incorrect = summary[player][action].incorrect;
+            const score = summary[player][action].score;
             const total = correct + incorrect;
             const perc = (correct / total);
             const correctPercent = total ? (perc * 100).toFixed(0) : '0';
-            const sty = perc > 0.8 ? 'color: #088a13; font-weight: bold;' : (perc < 0.3 ? 'color: #960909; font-weight: bold;' : 'color: #353535; font-weight: normal;')
+            const sty = perc >= 0.8 ? 'color: #088a13; font-weight: bold;' : (perc < 0.3 ? 'color: #960909; font-weight: bold;' : 'color: #353535; font-weight: normal;')
 
-            return `<td style='${sty}'>${correctPercent}% (${correct}/${total})</td>`;
-          }).join('')}
+            return `<td style='${sty}'>${correctPercent}%<br>(${correct}/${total})</td>`;
+          }).concat(
+            actions.map(action => {
+              if (["Ataque", "Bloqueio", "Saque"].includes(action)) {
+                const correct = summary[player][action].correct;
+                const incorrect = summary[player][action].incorrect;
+                const score = summary[player][action].score;
+                const total = correct + incorrect;
+
+                return `<td>${score}/${total}</td>`;
+              } else {
+                return "";
+              }
+            })
+          ).join('')}
         `;
           summaryTableBody.appendChild(row);
         });
