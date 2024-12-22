@@ -1,0 +1,421 @@
+abertura
+aceleração
+agonia
+agressividade
+alegria
+altruísmo
+altura
+alívio
+amabilidade
+amargor
+ambiguidade
+amizade
+amor
+animação
+ansiedade
+antiguidade
+antipatia
+apatia
+apreensão
+arrependimento
+arrumação
+atenção
+atração
+audácia
+autenticidade
+autonomia
+avaria
+barulho
+beleza
+belicosidade
+benefício
+benignidade
+bom humor
+bondade
+brandura
+bravura
+brevidade
+brilho
+burrice
+calma
+calor
+cansaço
+capacidade
+capricho
+carestia
+carinho
+certeza
+charme
+ciúme
+claridade
+classicismo
+cobiça
+compaixão
+complicação
+compulsão
+comumidade
+confiabilidade
+confiança
+confusão
+consciência
+constância
+contentamento
+conturbação
+contágio
+convicção
+cor
+coragem
+crescimento
+criatividade
+crítica
+culpa
+curiosidade
+decepção
+decência
+dedicação
+desapontamento
+desconcerto
+desconfiança
+desespero
+desinteresse
+desolação
+desonestidade
+desprezo
+desânimo
+determinação
+devoção
+dificuldade
+dignidade
+diligência
+dinamismo
+disciplina
+discrição
+disfarce
+distância
+diversão
+doença
+doçura
+durabilidade
+dureza
+dúvida
+educação
+efemeridade
+eficiência
+eficácia
+egoísmo
+elegância
+empatia
+encantamento
+enjoo
+equilíbrio
+erro
+escuridão
+esgotamento
+esperança
+espiritualidade
+esplendor
+espontaneidade
+espírito
+estabilidade
+estar absorto
+estar alterado
+estrondo
+euforia
+exaltação
+exatidão
+exaustão
+extroversão
+exuberância
+facilidade
+falibilidade
+fama
+fantasia
+fascínio
+fechamento
+feiura
+felicidade
+ferocidade
+flexibilidade
+fofura
+fome
+força
+fragilidade
+fraqueza
+frieza
+frustração
+fulgor
+fé
+fúria
+generosidade
+grandeza
+gratidão
+harmonia
+honestidade
+honra
+humanidade
+humildade
+idealismo
+ilusão
+imaginação
+impaciência
+impacto
+imparcialidade
+impecabilidade
+impenetrabilidade
+impossibilidade
+imprevisibilidade
+impulsividade
+incerteza
+incredibilidade
+indecisão
+indiferença
+infidelidade
+infinitude
+influência
+inocência
+inquietação
+insensibilidade
+insolência
+inspiração
+instabilidade
+integridade
+inteligência
+intencionalidade
+intensidade
+intransigência
+intuição
+inveja
+inventividade
+irregularidade
+irrepreensibilidade
+irreversibilidade
+irritação
+jovialidade
+justiça
+juventude
+lealdade
+legitimidade
+lentidão
+leveza
+liberdade
+limitação
+limpeza
+lisura
+longitude
+loucura
+luminosidade
+luto
+lógica
+maciez
+magnanimidade
+magnificência
+magreza
+maldade
+maleabilidade
+medo
+melancolia
+melindre
+meticulosidade
+mistério
+molhagem
+moralidade
+motivação
+má-educação
+necessidade
+nervosismo
+neutralidade
+nobreza
+nostalgia
+notoriedade
+novidade
+o desconhecido
+ociosidade
+ocultação
+ocultismo
+oportunidade
+orgulho
+orgulho ferido
+otimismo
+ousadia
+pacifismo
+paciência
+paixão
+palidez
+palpitação
+paradoxo
+paz
+pequenez
+percepção
+perdão
+perigo
+persistência
+perspectiva
+perspicácia
+persuasão
+perturbação
+peso
+piedade
+plenitude
+pobreza
+poder
+poesia
+polidez
+ponderação
+positividade
+praticidade
+preguiça
+preocupação
+previsibilidade
+previsão
+proatividade
+proficiência
+profundidade
+prolificidade
+prolongamento
+proximidade
+prudência
+pureza
+pão-durice
+quadratura
+qualidade
+quietude
+racionalidade
+radiação
+radicalismo
+raiva
+rancor
+rapidez
+razão
+realidade
+realismo
+reatividade
+rebeldia
+reciprocidade
+reflexão
+relatividade
+relevância
+religião
+relutância
+remorso
+renovação
+resiliência
+resistência
+respeito
+resplendor
+responsabilidade
+ressentimento
+rigidez
+rigor
+riqueza
+rodagem
+romantismo
+sabedoria
+satisfação
+saudade
+saúde
+secura
+sede
+segurança
+sensação
+sensibilidade
+sentimento
+ser ardente
+ser baixo
+ser barato
+ser desastrado
+ser detalhista
+ser direto
+ser disruptivo
+ser eclético
+ser educado
+ser enfático
+ser engraçado
+ser enigmático
+ser enorme
+ser envolvente
+ser estonteante
+ser exemplar
+ser exigente
+ser fidedigno
+ser fiel
+ser formidável
+ser gracioso
+ser gregário
+ser hilariante
+ser ilustre
+ser inabalável
+ser instigante
+ser insustentável
+ser interminável
+ser inusitado
+ser leviano
+ser longe
+ser memorável
+ser metódico
+ser minúsculo
+ser pacato
+ser perto
+ser recatado
+ser reconfortante
+ser risonho
+ser singelo
+ser singular
+ser surreal
+ser transcendental
+ser vasto
+ser visceral
+ser áspero
+ser único
+serenidade
+seriedade
+severidade
+silêncio
+simpatia
+simplicidade
+sinceridade
+situação desfavorável
+sofisticação
+sofrimento
+solenidade
+solidariedade
+sorte
+sossego
+sujeira
+superação
+surpresa
+sustentabilidade
+tensão
+tentação
+ternura
+timidez
+tolerabilidade
+tolerância
+trabalho
+tranquilidade
+transformação
+transparência
+tristeza
+triunfo
+turbulência
+tédio
+unificação
+união
+utilidade
+vaidade
+valentia
+valor
+vazio
+velhice
+velocidade
+verdade
+vergonha
+versatilidade
+viagem
+vibração
+vigor
+virtude
+vitória
+volatilidade
+vontade
+vulnerabilidade
+zelo
