@@ -2,6 +2,7 @@ let records = [];
 let selectedPlayer = null;
 let playerSummaries = [];
 let actionSummaries = [];
+let opponent_error_count = 0;
 
 document.querySelectorAll(".player-select-btn").forEach((button) => {
   button.addEventListener("click", () => {
@@ -43,9 +44,7 @@ document.querySelectorAll(".action-btn").forEach((button) => {
       });
 
       showAlert(
-        `Registro salvo! ${records.length}. ${selectedPlayer} - ${action}`,
-        "success"
-      );
+        `Registro salvo! ${records.length}. ${selectedPlayer} - ${action}`, "success");
     } else {
       showAlert("Precisa escolher um jogador com nome antes.", "danger");
     }
@@ -63,13 +62,17 @@ document.querySelectorAll("#undo-btn").forEach((button) => {
 
       console.log(undone);
 
-      showAlert(
-        `Registro mais recente apagado! Total de registros: ${records.length}`,
-        "success"
-      );
+      showAlert(`Registro mais recente apagado! Total de registros: ${records.length}`, "success");
     } else {
       showAlert("Precisa registrar alguma ação antes.", "danger");
     }
+  });
+});
+
+document.querySelectorAll("#opponent-error-btn").forEach((button) => {
+  button.addEventListener("click", () => {
+    opponent_error_count += 1;
+    showAlert(`Registro salvo! Erros do adversário: ${opponent_error_count}`, "success");
   });
 });
 
@@ -93,6 +96,7 @@ document.getElementById("reset-btn").addEventListener("click", () => {
   records = [];
   playerSummaries = [];
   actionSummaries = [];
+  opponent_error_count = 0
 
   selectedPlayer = null;
 
@@ -119,8 +123,10 @@ document.getElementById("download-btn").addEventListener("click", () => {
   const rows = playerSummaries.map((ps) =>
     headers.map((header) => ps[header]).join(",")
   ); // Convert each record to a CSV row
-  const csvContent = [headers.join(","), ...rows].join("\n"); // Combine headers and rows with line breaks
-
+  var opponent_row = "Equipe Adversária,Erros,0,0," + opponent_error_count.toString();
+  console.log(opponent_row);
+  const csvContent = [headers.join(","), ...rows, opponent_row].join("\n"); // Combine headers and rows with line breaks
+  console.log(csvContent);
   // Create a blob with the CSV content
   const blob = new Blob([csvContent], { type: "text/csv" });
 
