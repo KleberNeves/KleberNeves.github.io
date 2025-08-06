@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Key for mobile scaling -->
+  <title>Recombinador de Palavras</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 5vw;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.4;
+  }
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  .row {
+    display: flex;
+    gap: 2vw;
+    margin-bottom: 1rem;
+  }
+  .word-input {
+    flex: 1;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+  }
+  #generate-btn {
+    margin: 1rem 0;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    width: 100%;
+    cursor: pointer;
+  }
+  .acronym {
+    font-size: 1.4rem;
+    margin: 0.4rem 0;
+    word-break: break-word;
+  }
+
+  /* On small screens, stack inputs vertically */
+  @media (max-width: 600px) {
+    .row {
+      flex-direction: column;
+    }
+    body {
+      padding: 4vw;
+    }
+    h2 {
+      font-size: 1.8rem;
+    }
+    .word-input {
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+    #generate-btn {
+      font-size: 1.2rem;
+      padding: 1rem;
+    }
+    .acronym {
+      font-size: 1.6rem;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <div id="inputs">
+    <div class="row">
+      <input type="text" class="word-input" id="word1" value="CERRADO" style="color: red;" />
+      <input type="text" class="word-input" id="word2" value="AMAZONIA" style="color: green;" />
+    </div>
+    <div class="row">
+      <input type="text" class="word-input" id="word3" value="MATA ATLANTICA" style="color: blue;" />
+      <input type="text" class="word-input" id="word4" value="CAATINGA" style="color: peru;" />
+    </div>
+    <div class="row">
+      <input type="text" class="word-input" id="word5" value="PANTANAL" style="color: rebeccapurple;" />
+      <input type="text" class="word-input" id="word6" value="PAMPA" style="color: slategrey;" />
+    </div>
+  </div>
+
+  <button id="generate-btn">Gerar nomes</button>
+
+  <div id="results"></div>
+
+  <script>
+    // Temporary list of allowed syllables (replace with your own)
+    const allowedSyllables = [
+      "ba", "bal", "bam", "ban", "bas", "bar", "baz", "be", "bel", "bem", "ben", "bes", "ber", "bez", "bi", "bil", "bim", "bin", "bis", "bir", "biz", "bo", "bol", "bom", "bon", "bos", "bor", "boz", "bu", "bul", "bum", "bun", "bus", "bur", "buz", "ca", "cal", "cam", "can", "cas", "car", "caz", "ce", "cel", "cem", "cen", "ces", "cer", "cez", "ci", "cil", "cim", "cin", "cis", "cir", "ciz", "co", "col", "com", "con", "cos", "cor", "coz", "cu", "cul", "cum", "cun", "cus", "cur", "cuz", "da", "dal", "dam", "dan", "das", "dar", "daz", "de", "del", "dem", "den", "des", "der", "dez", "di", "dil", "dim", "din", "dis", "dir", "diz", "do", "dol", "dom", "don", "dos", "dor", "doz", "du", "dul", "dum", "dun", "dus", "dur", "duz", "fa", "fal", "fam", "fan", "fas", "far", "faz", "fe", "fel", "fem", "fen", "fes", "fer", "fez", "fi", "fil", "fim", "fin", "fis", "fir", "fiz", "fo", "fol", "fom", "fon", "fos", "for", "foz", "fu", "ful", "fum", "fun", "fus", "fur", "fuz", "ga", "gal", "gam", "gan", "gas", "gar", "gaz", "ge", "gel", "gem", "gen", "ges", "ger", "gez", "gi", "gil", "gim", "gin", "gis", "gir", "giz", "go", "gol", "gom", "gon", "gos", "gor", "goz", "gu", "gul", "gum", "gun", "gus", "gur", "guz", "ha", "hal", "ham", "han", "has", "har", "haz", "he", "hel", "hem", "hen", "hes", "her", "hez", "hi", "hil", "him", "hin", "his", "hir", "hiz", "ho", "hol", "hom", "hon", "hos", "hor", "hoz", "hu", "hul", "hum", "hun", "hus", "hur", "huz", "ja", "jal", "jam", "jan", "jas", "jar", "jaz", "je", "jel", "jem", "jen", "jes", "jer", "jez", "ji", "jil", "jim", "jin", "jis", "jir", "jiz", "jo", "jol", "jom", "jon", "jos", "jor", "joz", "ju", "jul", "jum", "jun", "jus", "jur", "juz", "ka", "kal", "kam", "kan", "kas", "kar", "kaz", "ke", "kel", "kem", "ken", "kes", "ker", "kez", "ki", "kil", "kim", "kin", "kis", "kir", "kiz", "ko", "kol", "kom", "kon", "kos", "kor", "koz", "ku", "kul", "kum", "kun", "kus", "kur", "kuz", "la", "lal", "lam", "lan", "las", "lar", "laz", "le", "lel", "lem", "len", "les", "ler", "lez", "li", "lil", "lim", "lin", "lis", "lir", "liz", "lo", "lol", "lom", "lon", "los", "lor", "loz", "lu", "lul", "lum", "lun", "lus", "lur", "luz", "ma", "mal", "mam", "man", "mas", "mar", "maz", "me", "mel", "mem", "men", "mes", "mer", "mez", "mi", "mil", "mim", "min", "mis", "mir", "miz", "mo", "mol", "mom", "mon", "mos", "mor", "moz", "mu", "mul", "mum", "mun", "mus", "mur", "muz", "na", "nal", "nam", "nan", "nas", "nar", "naz", "ne", "nel", "nem", "nen", "nes", "ner", "nez", "ni", "nil", "nim", "nin", "nis", "nir", "niz", "no", "nol", "nom", "non", "nos", "nor", "noz", "nu", "nul", "num", "nun", "nus", "nur", "nuz", "pa", "pal", "pam", "pan", "pas", "par", "paz", "pe", "pel", "pem", "pen", "pes", "per", "pez", "pi", "pil", "pim", "pin", "pis", "pir", "piz", "po", "pol", "pom", "pon", "pos", "por", "poz", "pu", "pul", "pum", "pun", "pus", "pur", "puz", "ra", "ral", "ram", "ran", "ras", "rar", "raz", "re", "rel", "rem", "ren", "res", "rer", "rez", "ri", "ril", "rim", "rin", "ris", "rir", "riz", "ro", "rol", "rom", "ron", "ros", "ror", "roz", "ru", "rul", "rum", "run", "rus", "rur", "ruz", "sa", "sal", "sam", "san", "sas", "sar", "saz", "se", "sel", "sem", "sen", "ses", "ser", "sez", "si", "sil", "sim", "sin", "sis", "sir", "siz", "so", "sol", "som", "son", "sos", "sor", "soz", "su", "sul", "sum", "sun", "sus", "sur", "suz", "ta", "tal", "tam", "tan", "tas", "tar", "taz", "te", "tel", "tem", "ten", "tes", "ter", "tez", "ti", "til", "tim", "tin", "tis", "tir", "tiz", "to", "tol", "tom", "ton", "tos", "tor", "toz", "tu", "tul", "tum", "tun", "tus", "tur", "tuz", "va", "val", "vam", "van", "vas", "var", "vaz", "ve", "vel", "vem", "ven", "ves", "ver", "vez", "vi", "vil", "vim", "vin", "vis", "vir", "viz", "vo", "vol", "vom", "von", "vos", "vor", "voz", "vu", "vul", "vum", "vun", "vus", "vur", "vuz", "xa", "xal", "xam", "xan", "xas", "xar", "xaz", "xe", "xel", "xem", "xen", "xes", "xer", "xez", "xi", "xil", "xim", "xin", "xis", "xir", "xiz", "xo", "xol", "xom", "xon", "xos", "xor", "xoz", "xu", "xul", "xum", "xun", "xus", "xur", "xuz", "za", "zal", "zam", "zan", "zas", "zar", "zaz", "ze", "zel", "zem", "zen", "zes", "zer", "zez", "zi", "zil", "zim", "zin", "zis", "zir", "ziz", "zo", "zol", "zom", "zon", "zos", "zor", "zoz", "zu", "zul", "zum", "zun", "zus", "zur", "zuz", "bla", "blal", "blam", "blan", "blas", "blar", "blaz", "ble", "blel", "blem", "blen", "bles", "bler", "blez", "bli", "blil", "blim", "blin", "blis", "blir", "bliz", "blo", "blol", "blom", "blon", "blos", "blor", "bloz", "blu", "blul", "blum", "blun", "blus", "blur", "bluz", "bra", "bral", "bram", "bran", "bras", "brar", "braz", "bre", "brel", "brem", "bren", "bres", "brer", "brez", "bri", "bril", "brim", "brin", "bris", "brir", "briz", "bro", "brol", "brom", "bron", "bros", "bror", "broz", "bru", "brul", "brum", "brun", "brus", "brur", "bruz", "cha", "chal", "cham", "chan", "chas", "char", "chaz", "che", "chel", "chem", "chen", "ches", "cher", "chez", "chi", "chil", "chim", "chin", "chis", "chir", "chiz", "cho", "chol", "chom", "chon", "chos", "chor", "choz", "chu", "chul", "chum", "chun", "chus", "chur", "chuz", "cla", "clal", "clam", "clan", "clas", "clar", "claz", "cle", "clel", "clem", "clen", "cles", "cler", "clez", "cli", "clil", "clim", "clin", "clis", "clir", "cliz", "clo", "clol", "clom", "clon", "clos", "clor", "cloz", "clu", "clul", "clum", "clun", "clus", "clur", "cluz", "cra", "cral", "cram", "cran", "cras", "crar", "craz", "cre", "crel", "crem", "cren", "cres", "crer", "crez", "cri", "cril", "crim", "crin", "cris", "crir", "criz", "cro", "crol", "crom", "cron", "cros", "cror", "croz", "cru", "crul", "crum", "crun", "crus", "crur", "cruz", "dra", "dral", "dram", "dran", "dras", "drar", "draz", "dre", "drel", "drem", "dren", "dres", "drer", "drez", "dri", "dril", "drim", "drin", "dris", "drir", "driz", "dro", "drol", "drom", "dron", "dros", "dror", "droz", "dru", "drul", "drum", "drun", "drus", "drur", "druz", "fla", "flal", "flam", "flan", "flas", "flar", "flaz", "fle", "flel", "flem", "flen", "fles", "fler", "flez", "fli", "flil", "flim", "flin", "flis", "flir", "fliz", "flo", "flol", "flom", "flon", "flos", "flor", "floz", "flu", "flul", "flum", "flun", "flus", "flur", "fluz", "fra", "fral", "fram", "fran", "fras", "frar", "fraz", "fre", "frel", "frem", "fren", "fres", "frer", "frez", "fri", "fril", "frim", "frin", "fris", "frir", "friz", "fro", "frol", "from", "fron", "fros", "fror", "froz", "fru", "frul", "frum", "frun", "frus", "frur", "fruz", "gla", "glal", "glam", "glan", "glas", "glar", "glaz", "gle", "glel", "glem", "glen", "gles", "gler", "glez", "gli", "glil", "glim", "glin", "glis", "glir", "gliz", "glo", "glol", "glom", "glon", "glos", "glor", "gloz", "glu", "glul", "glum", "glun", "glus", "glur", "gluz", "gra", "gral", "gram", "gran", "gras", "grar", "graz", "gre", "grel", "grem", "gren", "gres", "grer", "grez", "gri", "gril", "grim", "grin", "gris", "grir", "griz", "gro", "grol", "grom", "gron", "gros", "gror", "groz", "gru", "grul", "grum", "grun", "grus", "grur", "gruz", "gua", "gual", "guam", "guan", "guas", "guar", "guaz", "gue", "guel", "guem", "guen", "gues", "guer", "guez", "gui", "guil", "guim", "guin", "guis", "guir", "guiz", "guo", "guol", "guom", "guon", "guos", "guor", "guoz", "guu", "guul", "guum", "guun", "guus", "guur", "guuz", "kla", "klal", "klam", "klan", "klas", "klar", "klaz", "kle", "klel", "klem", "klen", "kles", "kler", "klez", "kli", "klil", "klim", "klin", "klis", "klir", "kliz", "klo", "klol", "klom", "klon", "klos", "klor", "kloz", "klu", "klul", "klum", "klun", "klus", "klur", "kluz", "kra", "kral", "kram", "kran", "kras", "krar", "kraz", "kre", "krel", "krem", "kren", "kres", "krer", "krez", "kri", "kril", "krim", "krin", "kris", "krir", "kriz", "kro", "krol", "krom", "kron", "kros", "kror", "kroz", "kru", "krul", "krum", "krun", "krus", "krur", "kruz", "lha", "lhal", "lham", "lhan", "lhas", "lhar", "lhaz", "lhe", "lhel", "lhem", "lhen", "lhes", "lher", "lhez", "lhi", "lhil", "lhim", "lhin", "lhis", "lhir", "lhiz", "lho", "lhol", "lhom", "lhon", "lhos", "lhor", "lhoz", "lhu", "lhul", "lhum", "lhun", "lhus", "lhur", "lhuz", "nha", "nhal", "nham", "nhan", "nhas", "nhar", "nhaz", "nhe", "nhel", "nhem", "nhen", "nhes", "nher", "nhez", "nhi", "nhil", "nhim", "nhin", "nhis", "nhir", "nhiz", "nho", "nhol", "nhom", "nhon", "nhos", "nhor", "nhoz", "nhu", "nhul", "nhum", "nhun", "nhus", "nhur", "nhuz", "pla", "plal", "plam", "plan", "plas", "plar", "plaz", "ple", "plel", "plem", "plen", "ples", "pler", "plez", "pli", "plil", "plim", "plin", "plis", "plir", "pliz", "plo", "plol", "plom", "plon", "plos", "plor", "ploz", "plu", "plul", "plum", "plun", "plus", "plur", "pluz", "pra", "pral", "pram", "pran", "pras", "prar", "praz", "pre", "prel", "prem", "pren", "pres", "prer", "prez", "pri", "pril", "prim", "prin", "pris", "prir", "priz", "pro", "prol", "prom", "pron", "pros", "pror", "proz", "pru", "prul", "prum", "prun", "prus", "prur", "pruz", "tla", "tlal", "tlam", "tlan", "tlas", "tlar", "tlaz", "tle", "tlel", "tlem", "tlen", "tles", "tler", "tlez", "tli", "tlil", "tlim", "tlin", "tlis", "tlir", "tliz", "tlo", "tlol", "tlom", "tlon", "tlos", "tlor", "tloz", "tlu", "tlul", "tlum", "tlun", "tlus", "tlur", "tluz", "tra", "tral", "tram", "tran", "tras", "trar", "traz", "tre", "trel", "trem", "tren", "tres", "trer", "trez", "tri", "tril", "trim", "trin", "tris", "trir", "triz", "tro", "trol", "trom", "tron", "tros", "tror", "troz", "tru", "trul", "trum", "trun", "trus", "trur", "truz", "vra", "vral", "vram", "vran", "vras", "vrar", "vraz", "vre", "vrel", "vrem", "vren", "vres", "vrer", "vrez", "vri", "vril", "vrim", "vrin", "vris", "vrir", "vriz", "vro", "vrol", "vrom", "vron", "vros", "vror", "vroz", "vru", "vrul", "vrum", "vrun", "vrus", "vrur", "vruz", "qua", "qual", "quam", "quan", "quas", "quar", "quaz", "que", "quel", "quem", "quen", "ques", "quer", "quez", "qui", "quil", "quim", "quin", "quis", "quir", "quiz", "quo", "quol", "quom", "quon", "quos", "quor", "quoz", "a", "al", "am", "an", "as", "ar", "az", "e", "el", "em", "en", "es", "er", "ez", "i", "il", "im", "in", "is", "ir", "iz", "o", "ol", "om", "on", "os", "or", "oz", "u", "ul", "um", "un", "us", "ur", "uz"
+    ];
+
+    // Colors for each input
+    const colors = ["red", "green", "blue", "peru", "rebeccapurple", "slategrey"];
+
+    // Helper: get all 2- and 3-letter combos
+    function getLetterCombos(word) {
+      const combos = [];
+      if (!word) return combos;
+      word = word.toLowerCase();
+      for (let len = 2; len <= 3; len++) {
+        for (let i = 0; i <= word.length - len; i++) {
+          combos.push(word.substring(i, i + len));
+        }
+      }
+      return combos;
+    }
+
+    // Filter by allowed syllables
+    function filterAllowed(combos) {
+      return combos.filter(c => allowedSyllables.includes(c));
+    }
+
+    // Random pick helper
+    function pickRandom(arr) {
+      if (!arr.length) return "";
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // Shuffle two arrays of the same length to the same new order
+    function shuffleBoth(array1, array2) {
+      for (let i = array1.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+        [array1[i], array1[j]] = [array1[j], array1[i]];    // swap
+        [array2[i], array2[j]] = [array2[j], array2[i]];    // swap
+      }
+      return [array1, array2];
+    }
+
+    // Sample words to use
+    function sample(array, n) {
+      return [...array] // copy to avoid changing original
+        .sort(() => Math.random() - 0.5) // quick shuffle (OK for small sets)
+        .slice(0, n);
+    }
+
+    document.getElementById("generate-btn").addEventListener("click", () => {
+      const words = [];
+
+      for (let i = 1; i <= 6; i++) {
+        words.push(document.getElementById("word" + i).value.trim());
+      }
+
+      // Build valid syllables for each word
+      const syllablesByWord = words.map(w => filterAllowed(getLetterCombos(w)));
+
+      console.log(syllablesByWord)
+
+      const resultsDiv = document.getElementById("results");
+      resultsDiv.innerHTML = "";
+
+      for (let i = 0; i < 10; i++) {
+        let pickedSyllables = [];
+        let theseColors = [];
+        let acronymHTML = "";
+
+        const nSyllables = 2 + Math.floor(Math.random() * 2) + Math.floor(Math.random() * 1.5) + Math.floor(Math.random() * 2);
+        const syllablesByWordUsed = sample(Array.from({ length: 6 }, (_, i) => i), nSyllables);
+
+        console.log(syllablesByWordUsed)
+
+        syllablesByWord.forEach((sylls, idx) => {
+          if (syllablesByWordUsed.includes(idx)) {
+            const syl = pickRandom(sylls);
+            pickedSyllables.push(syl);
+            theseColors.push(colors[idx]);
+          }
+        });
+
+        let shuffled = shuffleBoth(pickedSyllables, theseColors);
+        pickedSyllables = shuffled[0];
+        theseColors = shuffled[1];
+
+        pickedSyllables.forEach((syl, idx) => {
+          acronymHTML += `<span style="color:${theseColors[idx]}">${syl.toUpperCase()}</span>`;
+        });
+
+        const div = document.createElement("div");
+        div.className = "acronym";
+        div.innerHTML = acronymHTML;
+        resultsDiv.appendChild(div);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
